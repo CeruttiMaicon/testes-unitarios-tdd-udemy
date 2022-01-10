@@ -11,7 +11,7 @@ class CustomerTest extends TestCase
      * @test
      * @dataProvider customerAllowedDataProvider
      */
-    public function isAllowedToOrder($isActive, $isBlocked, $expectedAlloed)
+    public function isAllowedToOrder($isActive, $isBlocked, $expectedAllowed)
     {
         $customer = new Customer(
             $isActive,
@@ -22,7 +22,7 @@ class CustomerTest extends TestCase
 
         $isAllowed = $customer->isAllowedToOrder();
 
-        $this->assertEquals($expectedAlloed, $isAllowed);
+        $this->assertEquals($expectedAllowed, $isAllowed);
     }
 
     public function customerAllowedDataProvider()

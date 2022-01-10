@@ -154,3 +154,31 @@ Mas o que realmente importa é que o nome tenha corresponda a essas questões:
 * O que está sendo testado?
 * Quais as circunstâncias?
 * Qual resultado esperado?
+
+## Seção 6 - Trabalhando com Stubs
+
+Stubs são objetos que simulam outros objetos. Para evitar dependências externas, podemos criar um objeto que simula o comportamento de outro objeto.
+
+Ele faz com que uma determinada classe tenha apenas um retorno durante a chamada do método. Assim focando apenas na classe que se está testando sem se preocupar com as dependências.
+
+Pode ser utilizado da seguinte maneira:
+
+```code
+/**
+ * @test
+ */
+public function hasBadWords()
+{
+    $badWords = ['bad', 'words'];
+    $text = 'This is a bad word';
+
+    $badWordRepository = $this->createMock(BadWordFilter::class);
+    
+    $badWordRepository->method('findAll')->willReturn(['bobo', 'besta', 'chule']);
+
+    $hasBadWords = $badWordValidator->hasBadWords('Seu restaurante e muito bobo');
+
+    $this->assertEquals(true, $hasBadWords);
+}
+
+```
