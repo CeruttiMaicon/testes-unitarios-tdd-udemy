@@ -91,3 +91,38 @@ Criação do framework de testes
 Site PHPUnit: https://phpunit.de/
 
 Na minha versão de estudo eu utilizo o composer para fazer a instalação do PHPUnit.
+
+## Seção 5 - Praticando com aplicação de mercado
+
+### Utilização do @dataProvider
+
+Implementação do @dataPRovider é feita quando temos varios senarios de testes que podem utilizar a mesma estrutra de código somente variando os valores de entrada.
+
+Um bom exemplo esta em: aula_2/src/OrderBundle/Test/Validators/NotEmptyValidatorTest.php
+
+```code
+use OrderBundle\Validators\NotEmptyValidator;
+use PHPUnit\Framework\TestCase;
+
+class NotEmptyValidatorTest extends TestCase
+{
+    /**
+     * @dataProvider valueProvider
+     */
+    public function testIsValid($value, $expectedResult)
+    {
+        $notEmptyValidator = new NotEmptyValidator($value);
+
+        $isValid = $notEmptyValidator->isValid();
+
+        $this->assertEquals($expectedResult, $isValid);
+    }
+
+    public function valueProvider()
+    {
+        return [
+            'shouldBeValidWhenValueIsNotEmpty' => ['value' => 'foo', 'expectedResult' => true],
+            'shouldNotBeValidWhenValueIsEmpty' => ['value' => '', 'expectedResult' => false]
+        ];
+    }
+```
