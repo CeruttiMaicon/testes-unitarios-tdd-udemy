@@ -126,3 +126,31 @@ class NotEmptyValidatorTest extends TestCase
         ];
     }
 ```
+
+### Melhorias de nomenclaturas de cenarios
+
+Padrões fortemente aceitos nas comunidades:
+
+```text
+shouldBeValidWhenValueIsANumber
+
+whenValueIsANumberShouldBeValid
+```
+
+Também podemos atribuir um sistema de linguagem de nomenclatura mais baseado no cenário do teste, como por exemplo:
+
+```text
+should_BeValid_When_ValueIsANumber
+
+IsValid_ValuesANumber_True
+
+IsValid_True_ValueIsANumber
+
+BeValidIfVAluesIsANumber
+```
+
+Mas o que realmente importa é que o nome tenha corresponda a essas questões:
+
+* O que está sendo testado?
+* Quais as circunstâncias?
+* Qual resultado esperado?
