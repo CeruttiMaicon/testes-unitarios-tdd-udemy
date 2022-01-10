@@ -32,3 +32,32 @@ Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na 
 * Melhora o levantamento de requisitos
 * Documenta as regras de negócio
 * Menor custo
+
+
+Exemplo:
+
+```code
+class SearchTest {
+    shouldShowBioTest {
+        $google = new Google();
+        $page = $google->search('Obama');
+
+        assertTrue($page->hasBio());
+    }
+
+    shouldShowCalculatorTest {
+        $google = new Google();
+        $page = $google->search('1+1');
+
+        assertTrue($page->hasCalculator());
+    }
+
+    shouldShowNotFoundMessageTest {
+        $google = new Google();
+        $page = $google->search('asidiashdiaudiuahidaidhasudhasd');
+        
+        assertTrue($page->hasNotFoundMessage());
+    }
+}
+
+```
