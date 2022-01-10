@@ -2,7 +2,7 @@
 
 Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na aula da udemy.
 
-## Seção 1
+## Seção 1 - Introdução
 ### Quebrar em produção
 
 * Prejuizo Financeiro
@@ -60,13 +60,13 @@ class SearchTest {
 }
 
 ```
-## Seção 2
+## Seção 2 - Criando nosso próprio framework de teste
 
 Criação do framework de testes
 
 > Conteúdo criado na aula_1
 
-## Seção 3
+## Seção 3 - Diferenciando os tipos de testes
 
 ### Testes de Integração / Funcional / Fim a Fim
 
