@@ -2,7 +2,8 @@
 
 Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na aula da udemy.
 
-## Quebrar em produção
+## Seção 1
+### Quebrar em produção
 
 * Prejuizo Financeiro
   * Custo de mídia ou propagandas
@@ -16,7 +17,7 @@ Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na 
   * Deploys em dias ou horarios específicos
   * Pessas validando tudo
 
-## Testes manuais
+### Testes manuais
 
 * Mais lentos
 * Não exploram muitos cenários
@@ -24,7 +25,7 @@ Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na 
 * Adiciona uma etapa ao processo
 * Caros
 
-## Testes automatizados
+### Testes automatizados
 
 * Mais rápidos
 * Aplicação muito mais estável
@@ -61,3 +62,11 @@ class SearchTest {
 }
 
 ```
+## Seção 2
+
+Criação do framework de testes
+
+> Conteúdo criado na aula_1
+
+## Seção 3
+
