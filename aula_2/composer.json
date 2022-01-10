@@ -1,0 +1,17 @@
+{
+    "name": "maicon/aula_2",
+    "autoload": {
+        "psr-4": {
+            "Maicon\\Aula2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maicon Cerutti",
+            "email": "dev.cerutti.maicon@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}

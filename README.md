@@ -85,3 +85,9 @@ Criação do framework de testes
 * Mais fácil de encontrar falhas
 * Mais testes para chegar numa boa cobertura
 * Setup mais simples
+
+## Seção 4 - Instalação PHPUnit
+
+Site PHPUnit: https://phpunit.de/
+
+Na minha versão de estudo eu utilizo o composer para fazer a instalação do PHPUnit.
