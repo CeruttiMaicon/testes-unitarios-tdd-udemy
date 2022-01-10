@@ -155,7 +155,9 @@ Mas o que realmente importa é que o nome tenha corresponda a essas questões:
 * Quais as circunstâncias?
 * Qual resultado esperado?
 
-## Seção 6 - Trabalhando com Stubs
+## Seção 6 - Dominando dublês de teste
+
+### Trabalhando com Stubs
 
 Stubs são objetos que simulam outros objetos. Para evitar dependências externas, podemos criar um objeto que simula o comportamento de outro objeto.
 
@@ -165,8 +167,8 @@ Pode ser utilizado da seguinte maneira:
 
 ```code
 /**
- * @test
- */
+* @test
+*/
 public function hasBadWords()
 {
     $badWords = ['bad', 'words'];
@@ -181,4 +183,51 @@ public function hasBadWords()
     $this->assertEquals(true, $hasBadWords);
 }
 
+```
+
+### Trabalhando com Mocks
+
+Possui a mesma caracteristica dos Stubs, porem o mock é um objeto que simula o comportamento de um objeto real.
+
+> Um mock pode fazer os `asserts` das funções do objeto.
+
+```code
+/**
+* @test
+*/
+public function shouldSaveWhenReceivePoints()
+{
+    $pointsRepository = $this->createMock(PointsRepository::class);
+    $pointsRepository->expects($this->once())
+        ->method('save');
+
+    $pointsCalculator = $this->createMock(PointsCalculator::class);
+    $pointsCalculator->method('calculatePointsToReceive')
+        ->willReturn(100);
+
+    $allMessages = [];
+    $logger = $this->createMock(LoggerInterface::class);
+    $logger->method('log')
+        ->will($this->returnCallback(
+            function ($message) use (&$allMessages) {
+                $allMessages[] = $message;
+            }
+        ));
+
+    $fidelityProgramService = new FidelityProgramService(
+        $pointsRepository,
+        $pointsCalculator,
+        $logger
+    );
+
+    $customer = $this->createMock(Customer::class);
+    $value = 50;
+    $fidelityProgramService->addPoints($customer, $value);
+
+    $expectedMessages = [
+        'Checking points for customer',
+        'Customer received points'
+    ];
+    $this->assertEquals($expectedMessages, $allMessages);
+}
 ```
