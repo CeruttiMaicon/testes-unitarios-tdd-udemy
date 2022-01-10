@@ -77,3 +77,11 @@ Criação do framework de testes
 * Bons pra começar
 * Mais lentos e configuração do ambiente mais trabalhosa
 * Mais difícil de encontrar motivo da falha
+
+### Testes Unitários / Testes de Unidade
+
+* Testa de forma contextual
+* Mais rádidos
+* Mais fácil de encontrar falhas
+* Mais testes para chegar numa boa cobertura
+* Setup mais simples
