@@ -8,11 +8,9 @@ Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na 
 * Prejuizo Financeiro
   * Custo de mídia ou propagandas
   * Custo de oportunidade
-
 * Qualidade de Vida
   * Estresse
   * Trabalhar até tarde/final de semana
-  
 * Limitações no processo de desenvolvimento
   * Deploys em dias ou horarios específicos
   * Pessas validando tudo
@@ -70,3 +68,12 @@ Criação do framework de testes
 
 ## Seção 3
 
+### Testes de Integração / Funcional / Fim a Fim
+
+* Testa a aplicação de forma integrada
+  * broad integration teste
+  * narrow integration teste
+* Cobre mais código nos primeiros teste
+* Bons pra começar
+* Mais lentos e configuração do ambiente mais trabalhosa
+* Mais difícil de encontrar motivo da falha
