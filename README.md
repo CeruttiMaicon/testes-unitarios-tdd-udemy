@@ -23,3 +23,12 @@ Repositório para gravar os testes unitários e TDD com PHP e PHPUnit feitos na 
 * Talvez não tão confiáveis
 * Adiciona uma etapa ao processo
 * Caros
+
+## Testes automatizados
+
+* Mais rápidos
+* Aplicação muito mais estável
+* Aumenta confiança do time
+* Melhora o levantamento de requisitos
+* Documenta as regras de negócio
+* Menor custo
