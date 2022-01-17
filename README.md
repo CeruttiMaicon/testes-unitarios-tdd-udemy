@@ -231,3 +231,10 @@ public function shouldSaveWhenReceivePoints()
     $this->assertEquals($expectedMessages, $allMessages);
 }
 ```
+
+## Fakes
+
+Basicamente um fake da um retorno para uma função, com um valor especifico para ser utilizado no teste. Um exemplo foi, criar uma função que tenha os retornos, um especifico para cada tipo de teste.
+
+Este método pode ser facilmente substituido por Mocks.
+
