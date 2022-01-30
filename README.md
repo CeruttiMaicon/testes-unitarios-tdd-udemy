@@ -417,3 +417,47 @@ $this->assertEquals(1, $this->paymentService->getTotalAmount(), 'Total amount is
 
 > Ao refatorar uma função extensa, o ideal seria primeiramente fazer os testes para garantir que nenhuma funcionalidade será removida indevidamente.
 
+### Usando Fluent Interface para melhorar testes grandes
+
+Um metodo para reduzir os testes é separar o código repetitivo em funções menores. Assim justificando a utilização de Fluent Interface.
+
+Fluent Interface: é quando a função retorna o próprio objeto, assim possibilitando fazer varias chamadas de função incadeadas.
+
+Um exemplo:
+
+```code
+private $orderService;
+
+public function withOrderService()
+{
+
+    // Aqui ficaria a instancia que é repetitiva na classe de teste
+    $this->orderService = new OrderService(
+        $this->createMock(OrderRepository::class),
+        $this->createMock(OrderItemRepository::class),
+        ...
+    );
+
+    //Por padrão ela sempre retornará o próprio objeto
+    return $this;
+}
+
+```
+
+Agora para implementalo em uma classe, basta fazer:
+
+```code
+
+public function testShouldCreateOrder()
+{
+    $this->withOrderService();
+
+    $this->orderService->createOrder(
+        $this->customer,
+        $this->item,
+        $this->creditCard
+    );
+}
+```
+
+Agora todas as funções que precisam usar `new OrderService` são separadas em funções menores. E podem utilizar simplesmete `$this->withOrderService()`.
