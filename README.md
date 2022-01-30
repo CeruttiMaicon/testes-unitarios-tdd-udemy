@@ -232,13 +232,13 @@ public function shouldSaveWhenReceivePoints()
 }
 ```
 
-## Fakes
+### Fakes
 
 Basicamente um fake da um retorno para uma função, com um valor especifico para ser utilizado no teste. Um exemplo foi, criar uma função que tenha os retornos, um especifico para cada tipo de teste.
 
 Este método pode ser facilmente substituido por Mocks.
 
-## Retornando mocks dependendo dos parâmetros
+### Retornando mocks dependendo dos parâmetros
 
 ```code
 $map = [
@@ -271,7 +271,7 @@ $httpClient->method('send')
 ->expects($this->atList(2))
 ```
 
-## Retorno de mocks dependendo da ordem da chamada
+### Retorno de mocks dependendo da ordem da chamada
 
 Para isso, podemos utilizar do seguinte:
 
@@ -301,7 +301,8 @@ $httpClient->method('send')
 
 ```
 
-## Testando exceções
+## Seção 7 - Melhorando a organização dos testes
+### Testando exceções
 
 Criando um exemplo de caso de Excessão:
 
@@ -329,3 +330,76 @@ public function shouldNotSendWhenInvalidArgument()
 ```
 
 Que possui a mesma funcionalidade do teste acima, mas utilizando a anotação.
+
+### Setup e Teardown
+
+setup() e tearDown() são métodos que são executados antes e depois de cada funçaõ de teste.
+
+```code
+public function setUp()
+{
+    ...
+}
+
+public function tearDown()
+{
+    ...
+}
+
+// Obrigatóriamente deve ser estático
+public static function setupBeforeClass()
+{
+    ...
+}
+
+// Obrigatóriamente deve ser estático
+public static function teardownAfterClass()
+{
+    ...
+}
+```
+
+#### Setup
+
+Geralmente utilizada para criar objetos (mocks e dummies) que serão utilizados nos testes.
+
+A função é executada antes de cada teste.
+
+```code
+class PaymentServiceTest extends TestCase
+{
+    private $gateway;
+    private $paymentTransactionRepository;
+    private $paymentService;
+    private $customer;
+    private $item;
+    private $creditCard;
+
+    public function setUp()
+    {
+        $this->gateway = $this->createMock(Gateway::class);
+        $this->paymentTransactionRepository = $this->createMock(PaymentTransactionRepository::class);
+        $this->paymentService = new PaymentService($this->gateway, $this->paymentTransactionRepository);
+
+        $this->customer = $this->createMock(Customer::class);
+        $this->item = $this->createMock(Item::class);
+        $this->creditCard = $this->createMock(CreditCard::class);
+    }
+...
+}
+```
+> Cuidado: Nunca utilizar o setup para ficar com parte do cenário de teste
+
+#### Teardown
+
+Geralmente mais utilizada para casos de teste integração, onde é necessário executar alguma função depois de executar o teste (limpar cache, fechar conexão, etc).
+
+Está função é executada no final de cada teste.
+
+#### SetupBeforeClass e TeardownAfterClass
+
+Também utilizada para casos de teste integração, onde é necessário executar alguma função depois de executar o teste (limpar cache, fechar conexão, etc).
+
+SetupBeforeClass: Está função é executada no inicio de cada classe de teste.
+
+TeardownAfterClass: Está função é executada no final de cada classe de teste.
