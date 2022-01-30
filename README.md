@@ -461,3 +461,16 @@ public function testShouldCreateOrder()
 ```
 
 Agora todas as funções que precisam usar `new OrderService` são separadas em funções menores. E podem utilizar simplesmete `$this->withOrderService()`.
+
+## Coberturas de testes
+
+Primeiramente devemos entrar e entender o arquivo de configuração XML do PhpUnit.
+
+Alguns atributos:
+
+colors: Ativa ou desativa a cor do texto dos testes.
+
+logging: Ativa ou desativa o log dos testes.
+  * Opção: coverage-html
+
+Ele gera um arquivo html que mostra a cobertura de testes.
