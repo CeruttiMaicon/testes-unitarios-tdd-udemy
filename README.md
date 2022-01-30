@@ -412,3 +412,8 @@ $this->assertEquals(1, $this->paymentService->getTotalAmount(), 'Total amount is
 ```
 
 **Para cada teste, é importante que se teste apenas uma responsabilidade de cada vez.**
+
+### Classes grandes e legibilidade dos cenários
+
+> Ao refatorar uma função extensa, o ideal seria primeiramente fazer os testes para garantir que nenhuma funcionalidade será removida indevidamente.
+
