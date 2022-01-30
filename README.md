@@ -403,3 +403,12 @@ Também utilizada para casos de teste integração, onde é necessário executar
 SetupBeforeClass: Está função é executada no inicio de cada classe de teste.
 
 TeardownAfterClass: Está função é executada no final de cada classe de teste.
+
+### Escrevendo boas asserções
+
+```code
+// O terceiro parametro é uma mensagem customizada para o teste
+$this->assertEquals(1, $this->paymentService->getTotalAmount(), 'Total amount is not correct');
+```
+
+**Para cada teste, é importante que se teste apenas uma responsabilidade de cada vez.**
