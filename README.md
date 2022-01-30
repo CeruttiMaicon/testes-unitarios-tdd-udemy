@@ -238,3 +238,35 @@ Basicamente um fake da um retorno para uma função, com um valor especifico par
 
 Este método pode ser facilmente substituido por Mocks.
 
+## Retornando mocks dependendo dos parâmetros
+
+```code
+$map = [
+    [
+        'foo' => 'bar',
+        'bar' => 'baz',
+        false   
+    ],
+    [
+        'foo' => 'bar',
+        'bar' => 'baz',
+        true
+    ]
+];
+
+$httpClient->method('send')
+    ->expects($this->once())
+    ->will($this->returnValueMap($map))
+```
+> obs: O parametro extra enviado é o valor que será retornado.
+
+#### Expects
+
+```code
+// Ele espera que este metodo seja chamado apenas uma vez
+->expects($this->once())
+
+
+// Ele espera que este metodo seja chamado pelo menos 2 vezes
+->expects($this->atList(2))
+```
