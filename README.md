@@ -270,3 +270,33 @@ $httpClient->method('send')
 // Ele espera que este metodo seja chamado pelo menos 2 vezes
 ->expects($this->atList(2))
 ```
+
+## Retorno de mocks dependendo da ordem da chamada
+
+Para isso, podemos utilizar do seguinte:
+
+```code
+$httpClient->method('send')
+    // Que represena o valor da primeira chamada, assim podendo utilizar do willReturn
+    ->expects($this->at(0))
+    // Agora passando diretamente o valor do retorno esperado do teste
+    ->willReturn(['token' => '12345']);
+
+$httpClient->method('send')
+    ->expects($this->at(1))
+    // Agora passando diretamente o valor do segundo retorno esperado
+    ->willReturn(['paid' => false]);
+```
+
+#### Outra maneira de fazer isso com base na quantidade de chamadas
+
+```code
+$httpClient->method('send')
+    ->expects($this->atLast(2))
+    // Agora passando diretamente o valor do segundo retorno esperado
+    ->will(onConsecutiveCalls(
+        ['token' => '12345'],
+        ['paid' => false]
+    ));
+
+```
