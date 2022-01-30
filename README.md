@@ -300,3 +300,32 @@ $httpClient->method('send')
     ));
 
 ```
+
+## Testando exceções
+
+Criando um exemplo de caso de Excessão:
+
+```code
+$httpClient->method('send')
+    // No caso de teste da excessão o metodo send() não deve ser chamado
+    ->expects($this->never())
+    ->method('send');
+
+$this->expectException(InvalidArgumentException::class);
+```
+
+> InvalidArgumentException é a classe que faz o caso de teste falhar.
+
+Também é possível fazer este mesmo teste com anotation:
+```code
+/**
+* @test
+* @expectedException InvalidArgumentException
+*/
+public function shouldNotSendWhenInvalidArgument()
+{
+    $httpClient->send('invalid');
+}
+```
+
+Que possui a mesma funcionalidade do teste acima, mas utilizando a anotação.
